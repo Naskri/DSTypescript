@@ -47,9 +47,47 @@ export class SinglyLinkedList<T> {
     this.length++;
     return newNode;
   }
+
+  /*
+    Pop method - remove a node from end of SLL.
+  */
+
+  pop() {
+    if (!this.head) {
+      return null;
+    }
+
+    if (this.length === 1) {
+      const deleted = this.tail;
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return deleted?.value;
+    }
+
+    let current = this.head;
+    let previous = current;
+
+    while (current.next) {
+      previous = current;
+      current = current.next;
+    }
+
+    previous.next = null;
+    this.tail = previous;
+
+    this.length--;
+
+    return current.value;
+  }
 }
 
 const singlyLL = new SinglyLinkedList();
+
+singlyLL.push(3);
+singlyLL.push(5);
+singlyLL.push(6);
+singlyLL.pop();
 
 console.log(singlyLL);
 

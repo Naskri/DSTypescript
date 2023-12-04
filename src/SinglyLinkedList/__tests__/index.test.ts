@@ -35,4 +35,39 @@ describe("Singly Linked List - data structure tests suit", () => {
     expect(SLL.tail?.value).toBe(10);
     expect(SLL.length).toBe(2);
   });
+
+  test("Pop method without head and tail", () => {
+    const SLL = new SinglyLinkedList();
+
+    expect(SLL.pop()).toBeNull();
+  });
+
+  test("Pop method with length of 1", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.push(10);
+
+    expect(SLL.pop()).toBe(10);
+    expect(SLL.head).toBeNull();
+    expect(SLL.tail).toBeNull();
+    expect(SLL.length).toBe(0);
+  });
+
+  test("Pop method with multi elements", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.push(10);
+    SLL.push(20);
+    SLL.push(30);
+
+    expect(SLL.pop()).toBe(30);
+    expect(SLL.head?.value).toBe(10);
+    expect(SLL.tail?.value).toBe(20);
+    expect(SLL.length).toBe(2);
+
+    SLL.pop();
+
+    expect(SLL.tail?.value).toBe(SLL.head?.value);
+    expect(SLL.length).toBe(1);
+  });
 });
