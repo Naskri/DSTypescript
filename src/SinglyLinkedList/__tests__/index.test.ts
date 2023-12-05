@@ -90,4 +90,27 @@ describe("Singly Linked List - data structure tests suit", () => {
     expect(SLL.tail).toBeNull();
     expect(SLL.length).toBe(0);
   });
+
+  test("Unshift method without a head", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.unshift(10);
+
+    expect(SLL.head?.value).toBe(10);
+    expect(SLL.tail?.value).toBe(10);
+    expect(SLL.length).toBe(1);
+  });
+
+  test("Unshift method with a head", () => {
+    const SLL = new SinglyLinkedList();
+    SLL.push(15);
+
+    expect(SLL.head?.value).toBe(15);
+
+    SLL.unshift(10);
+
+    expect(SLL.head?.value).toBe(10);
+    expect(SLL.tail?.value).toBe(15);
+    expect(SLL.length).toBe(2);
+  });
 });

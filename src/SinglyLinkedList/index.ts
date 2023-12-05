@@ -99,11 +99,31 @@ export class SinglyLinkedList<T> {
 
     return current;
   }
+
+  /*
+    Unshift method - add a node on beginning of SLL.
+  */
+
+  unshift(value: T) {
+    const newNode = new SLLNode(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return newNode;
+  }
 }
 
 const singlyLL = new SinglyLinkedList();
 
 singlyLL.push(3);
+
+singlyLL.unshift(10);
 
 console.log(singlyLL);
 
