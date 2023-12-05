@@ -139,7 +139,22 @@ export class SinglyLinkedList<T> {
       tempIndex++;
     }
 
-    return finded.value;
+    return finded;
+  }
+
+  /*
+    Set method - set a value on node in specific index.
+    @params {value,index}
+  */
+
+  set(value: T, index: number) {
+    const node = this.get(index);
+
+    if (!node) return null;
+
+    node.value = value;
+
+    return node;
   }
 }
 
