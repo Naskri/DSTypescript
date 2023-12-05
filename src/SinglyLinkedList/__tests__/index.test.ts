@@ -70,4 +70,24 @@ describe("Singly Linked List - data structure tests suit", () => {
     expect(SLL.tail?.value).toBe(SLL.head?.value);
     expect(SLL.length).toBe(1);
   });
+
+  test("Shift method without a head and tail", () => {
+    const SLL = new SinglyLinkedList();
+
+    expect(SLL.shift()).toBeNull();
+  });
+
+  test("Shift method with a head", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.push(10);
+
+    expect(SLL.shift()?.value).toBe(10);
+
+    SLL.shift();
+
+    expect(SLL.head).toBeNull();
+    expect(SLL.tail).toBeNull();
+    expect(SLL.length).toBe(0);
+  });
 });

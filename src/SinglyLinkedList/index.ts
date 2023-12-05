@@ -80,14 +80,30 @@ export class SinglyLinkedList<T> {
 
     return current.value;
   }
+  /*
+    Shift method - remove a node from beginning of SLL.
+  */
+  shift() {
+    if (!this.head) {
+      return null;
+    }
+
+    let current = this.head;
+    this.head = current.next;
+
+    if (this.length === 1) {
+      this.tail = current.next;
+    }
+
+    this.length--;
+
+    return current;
+  }
 }
 
 const singlyLL = new SinglyLinkedList();
 
 singlyLL.push(3);
-singlyLL.push(5);
-singlyLL.push(6);
-singlyLL.pop();
 
 console.log(singlyLL);
 
