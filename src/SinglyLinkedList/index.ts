@@ -102,6 +102,7 @@ export class SinglyLinkedList<T> {
 
   /*
     Unshift method - add a node on beginning of SLL.
+    @params {value of node}
   */
 
   unshift(value: T) {
@@ -116,6 +117,29 @@ export class SinglyLinkedList<T> {
     }
     this.length++;
     return newNode;
+  }
+
+  /*
+    Get method - get a node on specific index.
+    @params {index to search}
+  */
+
+  get(index: number) {
+    if (index < 0 || index >= this.length) return null;
+
+    if (!this.head) return null;
+
+    let tempIndex = 0;
+    let finded = this.head;
+
+    while (tempIndex < index) {
+      if (!finded.next) return;
+
+      finded = finded?.next;
+      tempIndex++;
+    }
+
+    return finded.value;
   }
 }
 

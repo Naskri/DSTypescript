@@ -113,4 +113,35 @@ describe("Singly Linked List - data structure tests suit", () => {
     expect(SLL.tail?.value).toBe(15);
     expect(SLL.length).toBe(2);
   });
+
+  test("Get method with a invalid index", () => {
+    const SLL = new SinglyLinkedList();
+
+    const invalidLowerIndex = SLL.get(-1);
+
+    expect(invalidLowerIndex).toBeNull();
+
+    const invalidHigherIndex = SLL.get(SLL.length);
+
+    expect(invalidHigherIndex).toBeNull();
+  });
+
+  test("Get method without a head", () => {
+    const SLL = new SinglyLinkedList();
+
+    const finded = SLL.get(0);
+
+    expect(finded).toBeNull();
+  });
+
+  test("Get method with a head and valid index", () => {
+    const SLL = new SinglyLinkedList();
+    SLL.push(3);
+    SLL.push(4);
+    SLL.push(35);
+
+    const finded = SLL.get(2);
+
+    expect(finded).toBe(35);
+  });
 });
