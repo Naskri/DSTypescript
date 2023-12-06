@@ -156,6 +156,31 @@ export class SinglyLinkedList<T> {
 
     return node;
   }
+
+  /*
+    Insert method - add node on specific index.
+    @params {value,index}
+  */
+
+  insert(value: T, index: number) {
+    if (index === 0) {
+      return this.unshift(value);
+    }
+
+    const prevElement = this.get(index - 1);
+
+    if (!prevElement) return null;
+
+    const node = new SLLNode(value);
+
+    node.next = prevElement.next;
+
+    prevElement.next = node;
+
+    this.length++;
+
+    return node;
+  }
 }
 
 const singlyLL = new SinglyLinkedList();
@@ -163,6 +188,10 @@ const singlyLL = new SinglyLinkedList();
 singlyLL.push(3);
 
 singlyLL.unshift(10);
+
+singlyLL.insert(50, 0);
+singlyLL.insert(250, 1);
+singlyLL.insert(250, 4);
 
 console.log(singlyLL);
 

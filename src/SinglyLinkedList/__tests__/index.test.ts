@@ -161,4 +161,38 @@ describe("Singly Linked List - data structure tests suit", () => {
     expect(SLL.head?.value).toBe(3);
     expect(SLL.length).toBe(2);
   });
+
+  test("Insert method with a SLL length of 0", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.insert(250, 0);
+
+    expect(SLL.head?.value).toBe(250);
+    expect(SLL.tail?.value).toBe(250);
+  });
+
+  test("Insert method with invalid index", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.insert(250, 0);
+
+    SLL.insert(300, 12);
+
+    expect(SLL.length).toBe(1);
+  });
+
+  test("Insert method with valid index of specific position", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.push(3);
+    SLL.push(4);
+
+    expect(SLL.head?.value).toBe(3);
+    expect(SLL.head?.next?.value).toBe(4);
+
+    SLL.insert(300, 1);
+
+    expect(SLL.head?.next?.value).toBe(300);
+    expect(SLL.head?.next?.next?.value).toBe(4);
+  });
 });
