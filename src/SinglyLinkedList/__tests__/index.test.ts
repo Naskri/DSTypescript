@@ -47,7 +47,7 @@ describe("Singly Linked List - data structure tests suit", () => {
 
     SLL.push(10);
 
-    expect(SLL.pop()).toBe(10);
+    expect(SLL.pop()?.value).toBe(10);
     expect(SLL.head).toBeNull();
     expect(SLL.tail).toBeNull();
     expect(SLL.length).toBe(0);
@@ -60,7 +60,7 @@ describe("Singly Linked List - data structure tests suit", () => {
     SLL.push(20);
     SLL.push(30);
 
-    expect(SLL.pop()).toBe(30);
+    expect(SLL.pop()?.value).toBe(30);
     expect(SLL.head?.value).toBe(10);
     expect(SLL.tail?.value).toBe(20);
     expect(SLL.length).toBe(2);
@@ -194,5 +194,15 @@ describe("Singly Linked List - data structure tests suit", () => {
 
     expect(SLL.head?.next?.value).toBe(300);
     expect(SLL.head?.next?.next?.value).toBe(4);
+  });
+
+  test("Remove method with valid index", () => {
+    const SLL = new SinglyLinkedList();
+
+    SLL.push(3);
+
+    const removed = SLL.remove(0);
+
+    expect(removed?.value).toBe(3);
   });
 });

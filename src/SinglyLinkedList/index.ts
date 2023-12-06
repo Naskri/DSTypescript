@@ -62,7 +62,7 @@ export class SinglyLinkedList<T> {
       this.head = null;
       this.tail = null;
       this.length = 0;
-      return deleted?.value;
+      return deleted;
     }
 
     let current = this.head;
@@ -78,7 +78,7 @@ export class SinglyLinkedList<T> {
 
     this.length--;
 
-    return current.value;
+    return current;
   }
   /*
     Shift method - remove a node from beginning of SLL.
@@ -181,6 +181,34 @@ export class SinglyLinkedList<T> {
 
     return node;
   }
+
+  /*
+    Remove method - remove node on specific index.
+    @params {index}
+  */
+
+  remove(index: number) {
+    if (index === 0) {
+      return this.shift();
+    }
+    if (index === this.length - 1) {
+      return this.pop();
+    }
+
+    const prevElement = this.get(index - 1);
+
+    if (!prevElement) return null;
+
+    const removed = prevElement.next;
+
+    if (!removed) return null;
+
+    prevElement.next = removed.next;
+
+    this.length--;
+
+    return removed;
+  }
 }
 
 const singlyLL = new SinglyLinkedList();
@@ -192,6 +220,8 @@ singlyLL.unshift(10);
 singlyLL.insert(50, 0);
 singlyLL.insert(250, 1);
 singlyLL.insert(250, 4);
+
+singlyLL.remove(0);
 
 console.log(singlyLL);
 
